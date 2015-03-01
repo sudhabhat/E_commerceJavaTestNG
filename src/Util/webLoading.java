@@ -82,6 +82,15 @@ public class webLoading {
 		Element_Displayed = webFindElementByXpath(xpath).isDisplayed();
 		return Element_Displayed;
 	}
+	
+	public Boolean webElementDisplayednEnable (String xpath) throws IOException{
+		Element_Displayed = webFindElementByXpath(xpath).isDisplayed();
+		if (Element_Displayed.TRUE) {
+			Element_Displayed = webFindElementByXpath(xpath).isEnabled();
+		}
+	
+		return Element_Displayed;
+	}
 
 	public Boolean webElementEnabled (WebElement web_Enabled){
 		Element_Enabled = web_Enabled.isEnabled();
