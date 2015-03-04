@@ -67,14 +67,11 @@ public class webLoading {
 
 	}
 	
+	/**
+	 * closes the browser or window
+	*/
 	public  void quit() throws InterruptedException, IOException {
-		//System.out.println("quit the webpage");
 		a_Driver.quit();
-//		System.out.println("after web page quit");
-//		Runtime.getRuntime().exec("taskkill /F /IM firefox.exe");
-//		Thread.sleep(5000);
-//		Runtime.getRuntime().exec("taskkill /F /IM plugin-container.exe");
-//		Runtime.getRuntime().exec("taskkill /F /IM WerFault.exe");
 	} 
 	
 	/**
