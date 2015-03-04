@@ -9,7 +9,11 @@ import java.util.Properties;
 public class GetPropertyValues {
 	
 	
-	
+
+/**
+ * Reads the config.properties file which holds the key:value pair of the webelements of the ecommerce website 
+ * @throws IOException
+ */
 	public String getPropValue (String prop_Xpath) throws IOException {
 		Properties prop = new Properties();
 		String propFileName = "E:\\SudhaDev\\Java\\E_commerceJavaTestNG\\src\\configuration\\config.properties";

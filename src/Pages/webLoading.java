@@ -27,6 +27,11 @@ public class webLoading {
 	
 	GetPropertyValues properties = new GetPropertyValues();
 	
+
+/**
+ * WebLoading constructor will assign a browser the test will run on (1. Firefox, 2.Chrome, 3.IE) 
+ * based on the value being passed from ant driver
+*/
 	public webLoading(){
 		Properties sysProps = System.getProperties();
 		browserUsage = sysProps.getProperty("brows");
@@ -69,46 +74,54 @@ public class webLoading {
 //		Runtime.getRuntime().exec("taskkill /F /IM WerFault.exe");
 	} 
 	
-	public WebElement webFindElementByXpath(String Element) throws IOException{
-		Element_Name = a_Driver.findElement(By.xpath(properties.getPropValue(Element)));
-		return Element_Name;
-	}
-	
-	public Boolean webElementDisplayed (WebElement web_Displayed){
-		Element_Displayed = web_Displayed.isDisplayed();
-		return Element_Displayed;
-	}
-	public Boolean webElementDisplayed (String xpath) throws IOException{
-		Element_Displayed = webFindElementByXpath(xpath).isDisplayed();
-		return Element_Displayed;
-	}
-	
-	public Boolean webElementDisplayednEnable (String xpath) throws IOException{
-		Element_Displayed = webFindElementByXpath(xpath).isDisplayed();
-		if (Element_Displayed.TRUE) {
-			Element_Displayed = webFindElementByXpath(xpath).isEnabled();
-		}
-	
-		return Element_Displayed;
-	}
+	/**
+	  * Checks if the webelement is displayed
+	  * <p>
+	  * <i><b>element</b> type is string</i>
+	  * 
+	  * @author Sudha Rani
+	  * @param element
+	  *        name of the xpath from config.properties file
+	  * @return Boolean value
+	  * @throws Throwable
+	  */
 
-	public Boolean webElementEnabled (WebElement web_Enabled){
-		Element_Enabled = web_Enabled.isEnabled();
-		return Element_Enabled;
-	}
-	
 	public Boolean webElementDisplayXpath (String dElement) throws IOException{
 		Element_Name = a_Driver.findElement(By.xpath(properties.getPropValue(dElement)));
 		Element_Displayed = Element_Name.isDisplayed();
 		return Element_Displayed;
 	}
 	
+	/**
+	  * Checks if the webelement is enabled
+	  * <p>
+	  * <i><b>element</b> type is string</i>
+	  * 
+	  * @author Sudha Rani
+	  * @param element
+	  *        name of the xpath from config.properties file
+	  * @return Boolean value
+	  * @throws Throwable
+	  */
+
 	public Boolean webElementEnableXpath (String eElement) throws IOException{
 		Element_Name = a_Driver.findElement(By.xpath(properties.getPropValue(eElement)));
-		Element_Displayed = Element_Name.isDisplayed();
-		return Element_Displayed;
+		Element_Enabled = Element_Name.isEnabled();
+		return Element_Enabled;
 	}
 	
+	/**
+	  * Finds a webelement by xpath
+	  * <p>
+	  * <i><b>element</b> type is string</i>
+	  * 
+	  * @author Sudha Rani
+	  * @param element
+	  *        name of the xpath from config.properties file
+	  * @return None
+	  * @throws Throwable
+	  */
+
 	public void webElementClick (String cElement) throws IOException{
 		a_Driver.findElement(By.xpath(properties.getPropValue(cElement))).click();
 	}
@@ -151,15 +164,54 @@ public class webLoading {
 		}
 			return true;
 	}
+	
+	/**
+	  * Passes a value to the input field
+	  * <p>
+	  * <i><b>element</b> type is string</i>
+	  * 
+	  * @author Sudha Rani
+	  * @param element
+	  *        name of the xpath from config.properties file
+	  * @return None
+	  * @throws Throwable
+	  */
+
+	
 	public void webElementSend (String sElement, String value) throws IOException{
 		a_Driver.findElement(By.xpath(properties.getPropValue(sElement))).sendKeys(value);
 	}
 	
+	/**
+	  * Sets a value for a dropdown input field
+	  * <p>
+	  * <i><b>element</b> type is string</i>
+	  * 
+	  * @author Sudha Rani
+	  * @param element
+	  *        name of the xpath from config.properties file
+	  * @return None
+	  * @throws Throwable
+	  */
+
 	public void webElementDropDown (String pElement, String value) throws IOException{	
 		Select user_Dropdown = new Select(a_Driver.findElement(By.xpath(properties.getPropValue(pElement))));
 		user_Dropdown.selectByVisibleText(value);
 	}
 	
+	
+	/**
+	  * Verifies the text on the webelement and matches it with the expected value
+	  * <p>
+	  * <i><b>element</b> type is string</i>
+	  * 
+	  * @author Sudha Rani
+	  * @param element
+	  *        name of the xpath from config.properties file
+	  * @return Boolean value
+	  * @throws Throwable
+	  */
+
 	public Boolean webElementIsText (String tElement, String value) throws IOException{
 		String actual =  a_Driver.findElement(By.xpath(properties.getPropValue(tElement))).getText();
 		String expected = properties.getPropValue(value);
@@ -173,10 +225,50 @@ public class webLoading {
 	}
 	
 	
+	/**
+	  * Assert expected and actual value in various tests
+	  * <p>
+	  * <i><b>element</b> type is boolean</i>
+	  * 
+	  * @author Sudha Rani
+	  * @param element
+	  *        name of the xpath from config.properties file
+	  * @return None
+	  * @throws Throwable
+	  */
+
 	public void assertTest(Boolean expect, Boolean actual){
 		try {assertEquals(expect, actual);}
 		catch (NoSuchElementException e)
 		{e.getCause();}
+	}
+
+	public WebElement webFindElementByXpath(String Element) throws IOException{
+		Element_Name = a_Driver.findElement(By.xpath(properties.getPropValue(Element)));
+		return Element_Name;
+	}
+	
+	public Boolean webElementDisplayed (WebElement web_Displayed){
+		Element_Displayed = web_Displayed.isDisplayed();
+		return Element_Displayed;
+	}
+	public Boolean webElementDisplayed (String xpath) throws IOException{
+		Element_Displayed = webFindElementByXpath(xpath).isDisplayed();
+		return Element_Displayed;
+	}
+	
+	public Boolean webElementDisplayednEnable (String xpath) throws IOException{
+		Element_Displayed = webFindElementByXpath(xpath).isDisplayed();
+		if (Element_Displayed.TRUE) {
+			Element_Displayed = webFindElementByXpath(xpath).isEnabled();
+		}
+	
+		return Element_Displayed;
+	}
+
+	public Boolean webElementEnabled (WebElement web_Enabled){
+		Element_Enabled = web_Enabled.isEnabled();
+		return Element_Enabled;
 	}
 
 
