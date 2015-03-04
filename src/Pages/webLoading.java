@@ -54,6 +54,9 @@ public class webLoading {
 		 
 	}
 	
+	/**
+	 * Instantiates a browser, maximize the window, closes the cookies 
+	*/
 	public  void start(String webPage) throws InterruptedException, IOException {	
 		a_Driver.get(properties.getPropValue(webPage));
 		Thread.sleep(3000);	
