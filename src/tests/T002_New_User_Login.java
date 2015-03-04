@@ -6,7 +6,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import Util.webLoading;
+import Pages.webLoading;
 
 public class T002_New_User_Login {
 
@@ -24,6 +24,14 @@ public void after_Run() throws InterruptedException, IOException{
 	n_User.quit();
 }
 
+
+/**
+ * Test to assert the sign up functionality for a new user
+ * 1) user navigates to the sign in page (selects email option)
+ * 2) sign up as a new user with valid values 
+ * @throws IOException
+ * @throws InterruptedException
+ */
 @Test
 public void new_User_Login_Email() throws IOException, InterruptedException{
 	Thread.sleep(4000);

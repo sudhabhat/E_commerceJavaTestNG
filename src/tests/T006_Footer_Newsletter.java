@@ -6,18 +6,16 @@ import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import Util.webLoading;
+
+import Pages.webLoading;
 
 public class T006_Footer_Newsletter {
- public webLoading f_User;
+ 
+public webLoading f_User = new webLoading();
  
 @BeforeTest
 public void before_Run() throws InterruptedException, IOException{
-	f_User = new webLoading();
-	System.out.println("inside start first");
 	f_User.start("asos_Home");
-	System.out.println("after start");
-	
 }
 
 @AfterClass

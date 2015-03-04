@@ -8,8 +8,8 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import org.testng.Assert.*;
 
-import Util.LoginPage;
-import Util.webLoading;
+import Pages.LoginPage;
+import Pages.webLoading;
 
 public class T001_Existing_User_Login {
  public webLoading e_User;
@@ -28,6 +28,14 @@ public void after_Run() throws InterruptedException, IOException{
 	e_User.quit();
 }
 
+/**
+ * Test to assert the login functionality of an existing user
+ * 1) user navigates to the sign in page (email option)
+ * 2) successfully logs in 
+ * 3) assert the login is successful
+ * @throws IOException
+ * @throws InterruptedException
+ */
 @Test
 public void existing_User_SignUp() throws IOException, InterruptedException{
 	//before_Run();
