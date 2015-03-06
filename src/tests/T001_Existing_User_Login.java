@@ -2,12 +2,9 @@ package tests;
 
 import java.io.IOException;
 
-import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import org.testng.Assert.*;
-
 import Pages.LoginPage;
 import Pages.webLoading;
 
@@ -40,7 +37,7 @@ public void after_Run() throws InterruptedException, IOException{
 public void existing_User_SignUp() throws IOException, InterruptedException{
 	//before_Run();
 	e_User.webElementClicknWait("home_Signin");
-	Assert.assertTrue(lPage.LoginByEmail("tim.hong@sdfd.com", "testing12", e_User));
+	e_User.assertTest(lPage.LoginByEmail("tim.hong@sdfd.com", "testing12", e_User));
 }
 
 

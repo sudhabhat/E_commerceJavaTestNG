@@ -11,9 +11,10 @@ import Pages.webLoading;
 
 public class T004_Assert_TextLinks_HomePage {
 
-		webLoading a_link = new webLoading();
+		webLoading a_link;
 	@BeforeTest
 	public void before_Run() throws InterruptedException, IOException{
+		a_link = new webLoading();
 		a_link.start("asos_Home");
 	}
 
@@ -32,11 +33,10 @@ public class T004_Assert_TextLinks_HomePage {
  */
 	@Test
 	public void assert_Header_HomePage() throws IOException, InterruptedException{
-		Boolean expected = true;
-		a_link.assertTest(a_link.webElementIsLink("home_Signin"), expected);
-		a_link.assertTest(a_link.webElementIsLink("home_Header_Asos"), expected);
-		a_link.assertTest(a_link.webElementIsLink("home_Header_Boutiques"), expected);
-		a_link.assertTest(a_link.webElementIsLink("home_Header_Outfit"), expected);
+		a_link.assertTest(a_link.webElementIsLink("home_Signin"));
+		a_link.assertTest(a_link.webElementIsLink("home_Header_Asos"));
+		a_link.assertTest(a_link.webElementIsLink("home_Header_Boutiques"));
+		a_link.assertTest(a_link.webElementIsLink("home_Header_Outfit"));
 		
 	}
 	

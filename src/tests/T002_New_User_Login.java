@@ -10,13 +10,12 @@ import Pages.webLoading;
 
 public class T002_New_User_Login {
 
-	webLoading n_User = new webLoading();
+	webLoading n_User;
 	
-	@BeforeTest
-	public void before_Run() throws InterruptedException, IOException{
-	System.out.println("Before T002 start");
+@BeforeTest
+public void before_Run() throws InterruptedException, IOException{
+	n_User = new webLoading();
 	n_User.start("asos_Home");
-	System.out.println("after T002 start");
 }
 
 @AfterClass
@@ -34,9 +33,7 @@ public void after_Run() throws InterruptedException, IOException{
  */
 @Test
 public void new_User_Login_Email() throws IOException, InterruptedException{
-	Thread.sleep(4000);
-	n_User.webFindElementByXpath("home_Join").click();
-	Thread.sleep(4000);
+	n_User.webElementClicknWait("home_Join");
 	n_User.webFindElementByXpath("joinAsos_EmailIcon").click();
 	n_User.webElementSend("joinAsos_EmailId", "hd@adb.com");
 	n_User.webElementSend("joinAsos_FirstName", "asdf");

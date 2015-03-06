@@ -11,10 +11,11 @@ import Pages.webLoading;
 
 public class T005_LoginPage {
 
-		webLoading a_link = new webLoading();
+		webLoading a_link;
 		
 	@BeforeTest
 	public void before_Run() throws InterruptedException, IOException{
+		a_link = new webLoading();
 		a_link.start("asos_Home");
 	}
 
