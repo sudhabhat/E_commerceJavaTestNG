@@ -36,13 +36,13 @@
     <target name="compile" depends="clean,init,setClassPath,loadTestNG">
         <echo message="classpath:${test.classpath}"/>
         <echo message="compiling.........."/>
-        <javac destdir="${build.dir}" srcdir="${src.dir}" classpath="${test.classpath}"/>
+        <javac destdir="${build.dir}" srcdir="${src.dir}" classpath="${test.classpath}" debug="true" />
     </target>
     
     <target name="runTests">
         <testng classpath="${test.classpath}:${build.dir}">
         	<sysproperty key="brows" value="2"/>
-            <xmlfileset dir="${basedir}" includes="testng.xml"/>
+            <xmlfileset dir="${basedir}" includes="testng-t005.xml"/>
         </testng>
     </target>
     
