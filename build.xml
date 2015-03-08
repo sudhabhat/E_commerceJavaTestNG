@@ -41,8 +41,8 @@
     
     <target name="runTests">
         <testng classpath="${test.classpath}:${build.dir}">
-        	<sysproperty key="brows" value="2"/>
-            <xmlfileset dir="${basedir}" includes="testng-t005.xml"/>
+        	<sysproperty key="brows" value="1"/>
+            <xmlfileset dir="${basedir}" includes="testng.xml"/>
         </testng>
     </target>
     

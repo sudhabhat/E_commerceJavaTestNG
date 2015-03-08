@@ -2,11 +2,11 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="Suite1">
-<parameter name="email-id" value="tim.hong@sdfd.com"/>
-<parameter name="pass-word" value="testing12"/>
+<!--  <parameter name="email-id" value="tim.hong@sdfd.com"/>
+<parameter name="pass-word" value="testing12"/> -->
   <test name="test1">
     <classes>
-       <class name="tests.T005_LoginPage"/>
+       <class name="tests.T002_New_User_Login"/>
     </classes>
   </test>
 </suite>

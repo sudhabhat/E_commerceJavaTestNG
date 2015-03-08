@@ -12,11 +12,6 @@ import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
-
-import org.apache.james.mime4j.message.Message;
-import org.apache.xml.serializer.utils.Messages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -56,15 +51,22 @@ public class webLoading {
 	public webLoading() throws IOException {
 		Properties sysProps = System.getProperties();
 		browserUsage = sysProps.getProperty("brows");
-		int browser_value = Integer.parseInt(browserUsage);
+		//int browser_value = Integer.parseInt(browserUsage);
+		int browser_value=2;
+		System.out.println("browser"+browser_value);
 		switch (browser_value) {
 		case 1:
+			System.out.println("in ff start");
 			a_Driver = new FirefoxDriver();
+			System.out.println("in firefox");
 			break;
 		case 2:
+			System.out.println("in chrome start");
 			System.setProperty("webdriver.chrome.driver",
 					properties.getPropValue("chrome_Exe"));
+			System.out.println("chromebetweenb");
 			a_Driver = new ChromeDriver();
+			System.out.println("in chrome");
 			break;
 		case 3:
 			a_Driver = new InternetExplorerDriver();

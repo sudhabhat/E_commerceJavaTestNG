@@ -6,7 +6,6 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-
 import Pages.LoginPage;
 import Pages.webLoading;
 
@@ -16,9 +15,11 @@ public class T001_Existing_User_Login {
 
 	@BeforeTest
 	public void before_Run() throws InterruptedException, IOException {
+		System.out.println("in before run");
 		e_User = new webLoading();
 		lPage = new LoginPage();
 		e_User.start("asos_Home");
+		System.out.println("end of before run");
 
 	}
 
@@ -40,7 +41,10 @@ public class T001_Existing_User_Login {
 	public void existing_User_SignUp(String Emailid, String Password)
 			throws IOException, InterruptedException {
 		e_User.webElementClicknWait("home_Signin");
-		e_User.assertTest(lPage.LoginByEmail(Emailid, Password, e_User));
+		lPage.LoginByEmail(Emailid, Password, e_User);
+		Boolean actual = e_User.webElementIsText("asos_FirstName",
+				"user_FirstName");
+		e_User.assertTest(actual);
 	}
 
 }
