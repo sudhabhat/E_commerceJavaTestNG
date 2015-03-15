@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="SuiteListenerExample">
+    <listeners>
+        <listener class-name="listeners.SuiteListener" />
+    </listeners> 
+  <suite-files>
+     <suite-file path="./tests.T007_SuiteListener.xml"/>
+  </suite-files>
+</suite>

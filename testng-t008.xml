@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<!-- Implementation of TestNg listener IExecutionListener -->
+
+<suite name="Suite1">
+	<parameter name="email-id" value="tim.hong@sdfd.com"/>
+	<parameter name="pass-word" value="testing12"/>
+	<listeners>
+    	<listener class-name="listeners.ExecutionListener1" />    
+  	</listeners>
+  	<test name="test1">
+    	<classes>
+       		<class name="tests.T008_Women_ShopByProduct"/>
+    	</classes>
+  	</test>
+</suite>
+

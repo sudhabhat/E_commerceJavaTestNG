@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<!-- Implemenation of TestNg listener IExecutionListener -->
+
+<suite name="Suite1">
+	<listeners>
+    	<listener class-name="listeners.ExecutionListener1" />    
+  	</listeners>
+  	<test name="test1">
+    	<classes>
+       		<class name="tests.T006_Footer_Newsletter"/>
+    	</classes>
+  	</test>
+</suite>
+

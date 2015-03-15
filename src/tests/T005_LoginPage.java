@@ -2,7 +2,6 @@ package tests;
 
 import java.io.IOException;
 
-import org.apache.log4j.Logger;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
@@ -14,7 +13,6 @@ import Pages.webLoading;
 public class T005_LoginPage {
 	public webLoading e_User;
 	public LoginPage lPage;
-	static Logger log = Logger.getLogger(T005_LoginPage.class.getName());
 		
 	@BeforeMethod
 	public void before_Run() throws InterruptedException, IOException {
@@ -54,10 +52,6 @@ public class T005_LoginPage {
 		if (!expected)
 		{
 			e_User.assertTest(e_User.webElementDisplayed("signIn_Error_Block"));
-			log.debug(expected+"in debug");
-			log.info(expected+"in info");
-			log.error(expected+"in error");
-			
 		}
 		else
 		{

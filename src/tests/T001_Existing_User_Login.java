@@ -15,12 +15,9 @@ public class T001_Existing_User_Login {
 
 	@BeforeTest
 	public void before_Run() throws InterruptedException, IOException {
-		System.out.println("in before run");
 		e_User = new webLoading();
 		lPage = new LoginPage();
 		e_User.start("asos_Home");
-		System.out.println("end of before run");
-
 	}
 
 	@AfterTest

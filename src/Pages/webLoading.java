@@ -7,11 +7,16 @@ import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import javax.imageio.ImageIO;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -24,6 +29,7 @@ import Pages.GetPropertyValues;
 import Pages.webLoading;
 
 import org.testng.Assert;
+import org.testng.Reporter;
 
 /*
  * 
@@ -38,7 +44,8 @@ public class webLoading {
 	public Boolean Element_SendKey;
 	public String Element_Text;
 	public String browserUsage;
-
+	private static Map verificationFailuresMap = new HashMap();
+	static List<Throwable> verificationFailures= new ArrayList<Throwable>();
 	GetPropertyValues properties = new GetPropertyValues();
 
 	/**
@@ -51,22 +58,15 @@ public class webLoading {
 	public webLoading() throws IOException {
 		Properties sysProps = System.getProperties();
 		browserUsage = sysProps.getProperty("brows");
-		//int browser_value = Integer.parseInt(browserUsage);
-		int browser_value=2;
-		System.out.println("browser"+browser_value);
+		int browser_value = Integer.parseInt(browserUsage);
 		switch (browser_value) {
 		case 1:
-			System.out.println("in ff start");
 			a_Driver = new FirefoxDriver();
-			System.out.println("in firefox");
 			break;
 		case 2:
-			System.out.println("in chrome start");
 			System.setProperty("webdriver.chrome.driver",
 					properties.getPropValue("chrome_Exe"));
-			System.out.println("chromebetweenb");
 			a_Driver = new ChromeDriver();
-			System.out.println("in chrome");
 			break;
 		case 3:
 			a_Driver = new InternetExplorerDriver();
@@ -271,6 +271,7 @@ public class webLoading {
 		try {
 			Assert.assertEquals(expect, actual);
 		} catch (Exception e) {
+			addVerificationFailure(e);
 			e.printStackTrace();
 		}
 	}
@@ -279,8 +280,17 @@ public class webLoading {
 		try {
 			Assert.assertTrue(actual);
 		} catch (Throwable e) {
-			e.printStackTrace();
+			addVerificationFailure(e);
 		}
+	}
+	
+ 
+	public static List<Throwable> getVerificationFailures() {
+		return verificationFailures == null ? new ArrayList() : verificationFailures;
+	}
+ 
+	public static void addVerificationFailure(Throwable e) {
+		verificationFailures.add(e);
 	}
 
 	public WebElement webFindElementByXpath(String Element) throws IOException {
